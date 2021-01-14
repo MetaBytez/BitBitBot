@@ -1,7 +1,7 @@
 from irc.bot import SingleServerIRCBot
 from irc.client import ServerConnection, Event
 
-from models import TwitchTags
+from .models import TwitchTags
 
 
 class BitBitBot(SingleServerIRCBot):
@@ -34,13 +34,3 @@ class BitBitBot(SingleServerIRCBot):
         })
 
         print(f'{tags.display_name}: {msg}')
-
-
-if __name__ == '__main__':
-    from settings import BOT_TOKEN, BOT_NAME, CHANNEL_NAME
-    bitbit = BitBitBot(
-        BOT_NAME,
-        BOT_TOKEN,
-        CHANNEL_NAME
-    )
-    bitbit.start()
