@@ -13,3 +13,34 @@ bot = BitBitBot(
 
 bot.start()
 ```
+
+## Creating Plugins
+Assuming you have installed bitbitbot in a virtualenv called `.venv` and then create the following project structure
+```
+|- my_bot
+|- - .venv
+|- - plugins
+|- - - my_plugin
+|- - - - commands.py
+```
+You can add the following code to the `commands.py` file, to register your first command.
+```python
+from bitbitbot.bot import BitBitBot
+from bitbitbot.commands import register
+from bitbitbot.models import TwitchTags
+
+
+@register('foo')
+def foo(bot: BitBitBot, msg: str, tags: TwitchTags) -> None:
+    bot.send_message('Hello World!')
+```
+
+The name of the directories inside of `plugins` can be whatever you want, but the root directory must be called `plugins`
+
+You can have multiple directories in the `plugins` directory
+
+You can add multiple commands to a single `commands.py` file.
+
+The name of the function does not have to match the command name.
+
+You don't need the type annotations, they are just for demonstration purposes.
