@@ -26,6 +26,7 @@ class BitBitBot(SingleServerIRCBot):
         conn.cap('REQ', ':twitch.tv/tags')
         conn.cap('REQ', ':twitch.tv/commands')
         conn.join(self.channel)
+        print('Bot is live')
 
     def on_pubmsg(self, conn: ServerConnection, event: Event):
         msg = event.arguments[0]
