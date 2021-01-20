@@ -39,5 +39,8 @@ class BitBitBot(SingleServerIRCBot):
             if command in COMMANDS:
                 COMMANDS[command](self, ' '.join(parts), tags)
 
+    def publish_message(self, message: str, tags: TwitchTags) -> None:
+        pass
+
     def send_message(self, message: str) -> None:
         self.connection.privmsg(self.channel, message)
