@@ -2,6 +2,7 @@ from irc.bot import SingleServerIRCBot
 from irc.client import ServerConnection, Event
 
 from .commands import COMMANDS
+from .events import EVENTS
 from .models import TwitchTags
 
 
@@ -39,8 +40,17 @@ class BitBitBot(SingleServerIRCBot):
             if command in COMMANDS:
                 COMMANDS[command](self, ' '.join(parts), tags)
 
-    def publish_message(self, message: str, tags: TwitchTags) -> None:
-        pass
+        self.emit_event(
+            'chat_message',
+            {
+                'msg': msg,
+                'tags': TwitchTags,
+            }
+        )
 
     def send_message(self, message: str) -> None:
         self.connection.privmsg(self.channel, message)
+
+    def emit_event(self, event_name: str, event_data) -> None:
+        for listener in EVENTS[event_name]:
+            listener(event_data)

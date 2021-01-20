@@ -1,7 +1,6 @@
 from os import getenv
 
 from bitbitbot.bot import BitBitBot
-from bitbitbot.commands import discover_commands
 from bitbitbot.parsers import parser
 
 
@@ -16,7 +15,6 @@ def run(args):
         print('ERROR: Missing required argument CHANNEL')
         exit(1)
 
-    discover_commands()
     bot = BitBitBot(
         username=args.name,
         token=args.token,

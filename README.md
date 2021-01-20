@@ -25,12 +25,12 @@ Assuming you have installed bitbitbot in a virtualenv called `.venv` and then cr
 ```
 You can add the following code to the `commands.py` file, to register your first command.
 ```python
+from bitbitbot import command
 from bitbitbot.bot import BitBitBot
-from bitbitbot.commands import register
 from bitbitbot.models import TwitchTags
 
 
-@register('foo')
+@command('foo')
 def foo(bot: BitBitBot, msg: str, tags: TwitchTags) -> None:
     bot.send_message('Hello World!')
 ```
