@@ -44,7 +44,7 @@ class BitBitBot(SingleServerIRCBot):
             'chat_message',
             {
                 'msg': msg,
-                'tags': TwitchTags,
+                'tags': tags,
             }
         )
 
