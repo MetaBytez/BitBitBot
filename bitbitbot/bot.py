@@ -35,6 +35,9 @@ class BitBitBot(SingleServerIRCBot):
             tag['key'].replace('-', '_'): tag['value']
             for tag in event.tags
         })
+        if tags.display_name.lower() == self.channel[1:]:
+            tags.broadcaster = True
+
         if msg[0] == '!':
             command, *parts = msg[1:].split()
             if command in COMMANDS:
