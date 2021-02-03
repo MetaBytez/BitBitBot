@@ -3,7 +3,7 @@ from irc.client import ServerConnection, Event
 
 from .commands import COMMANDS
 from .events import EVENTS
-from .models import TwitchTags
+from .models import Role, TwitchTags
 
 
 class BitBitBot(SingleServerIRCBot):
@@ -35,8 +35,6 @@ class BitBitBot(SingleServerIRCBot):
             tag['key'].replace('-', '_'): tag['value']
             for tag in event.tags
         })
-        if tags.display_name.lower() == self.channel[1:]:
-            tags.broadcaster = True
 
         if msg[0] == '!':
             command, *parts = msg[1:].split()
