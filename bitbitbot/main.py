@@ -9,10 +9,7 @@ from bitbitbot import parsers
 
 def discover_plugins():
     plugins_path = Path('plugins')
-    try:
-        mkdir(plugins_path)
-    except FileExistsError:
-        pass
+    plugins_path.mkdir(parents=True, exist_ok=True)
 
     for child in plugins_path.iterdir():
         if child.is_dir():
