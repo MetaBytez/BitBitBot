@@ -82,4 +82,4 @@ def plugin_install_parser(plugins_subparsers):
         'path',
         help='Path to the plugin you would like to install. Can be a local path to a zip, or a GitHub URL'
     )
-    install_parser.set_defaults(func=lambda __: install_parser.print_help())
+    install_parser.set_defaults(func=install)
